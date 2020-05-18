@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Wrapper
+      group="update-form"
+      v-cloak
+    >
+        <div slot-scope="props">
+            <fieldset class="fieldset">
+                <legend>Personal details</legend>
+
+                <div>
+                    <TextInput
+                      :group="props.group"
+                      name="first_name"
+                      v-model="props.fields.first_name"
+                      :focus="true"
+                      placeholder="First name"
+                      maxlength="9"
+                      autocomplete="given-name"
+                    ></TextInput>
+                </div>
+
+            </fieldset>
+        </div>
+    </Wrapper>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Wrapper from './components/Form/Wrapper.vue'
+import TextInput from './components/Form/Inputs/Text.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Wrapper,
+    TextInput
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
